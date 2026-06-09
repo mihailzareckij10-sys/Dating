@@ -5,7 +5,7 @@ import { SlidersHorizontal } from "lucide-react";
 import { categories } from "../data/profiles";
 
 export function CategoryChips() {
-  const [active, setActive] = useState("Все");
+  const [active, setActive] = useState("");
   return (
     <div className="-mx-3 sm:mx-0 px-3 sm:px-0">
       <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">

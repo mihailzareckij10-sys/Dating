@@ -2,15 +2,16 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Search, Map, Plus, Moon, Globe, ShieldCheck } from "lucide-react";
+import { Search, Map, Plus, Moon, ShieldCheck } from "lucide-react";
 import { useAuth } from "./AuthProvider";
+import { CitySelect } from "./CitySelect";
 
 export function TopBar() {
   return (
     <div className="gradient-bar text-white text-[11px] sm:text-xs font-semibold">
       <div className="mx-auto max-w-6xl px-3 sm:px-4 h-7 flex items-center justify-between">
-        <span className="hidden sm:flex items-center gap-1.5 opacity-95">
-          <Globe className="w-3.5 h-3.5" /> Москва
+        <span className="hidden sm:flex items-center gap-1.5">
+          <CitySelect />
         </span>
         <span className="flex items-center gap-1.5">
           <ShieldCheck className="w-3.5 h-3.5" />
