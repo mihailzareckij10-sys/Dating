@@ -9,7 +9,7 @@ const items = [
   { href: "/catalog", label: "Каталог", icon: LayoutGrid },
   { href: "/favorites", label: "Избранное", icon: Heart },
   { href: "/map", label: "Карта", icon: Map },
-  { href: "/profile/1", label: "Профиль", icon: User },
+  { href: "/account", label: "Профиль", icon: User },
 ];
 
 export function BottomNav() {

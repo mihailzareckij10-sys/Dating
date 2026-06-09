@@ -81,6 +81,38 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
         <div className="space-y-5">
           <Gallery seed={profile.photoSeed} count={profile.photoCount} />
 
+          {/* Mobile contact card — shown only on small screens */}
+          <div className="lg:hidden rounded-2xl bg-ink-900 border border-white/5 p-4 space-y-3">
+            <button className="w-full h-12 rounded-xl gradient-bar text-white font-semibold shadow-glow flex items-center justify-center gap-2 active:opacity-90 transition">
+              <Send className="w-4.5 h-4.5" /> Написать сообщение
+            </button>
+            <div className="grid grid-cols-2 gap-2">
+              <button className="h-11 rounded-xl bg-ink-800 border border-white/5 font-medium flex items-center justify-center gap-2 active:border-brand/40 transition">
+                <Heart className="w-4 h-4" /> В избранное
+              </button>
+              <button className="h-11 rounded-xl bg-ink-800 border border-white/5 font-medium flex items-center justify-center gap-2 active:border-brand/40 transition">
+                <Calendar className="w-4 h-4" /> Встреча
+              </button>
+            </div>
+            <div>
+              <div className="text-[13px] font-semibold text-white/70 mb-2">Ищу</div>
+              <div className="flex flex-wrap gap-1.5">
+                {profile.lookingFor.map((g) => (
+                  <span
+                    key={g}
+                    className="text-[12px] px-2.5 py-1 rounded-lg bg-brand/15 text-brand-400 border border-brand/20"
+                  >
+                    {g}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="flex items-center gap-2 text-[12px] text-white/50 pt-1">
+              <ShieldCheck className="w-4 h-4 text-verify shrink-0" />
+              Анкета прошла верификацию по фото и документу.
+            </div>
+          </div>
+
           {/* About */}
           <section className="rounded-2xl bg-ink-900 border border-white/5 p-5">
             <h2 className="text-lg font-bold mb-3 flex items-center gap-2">
@@ -161,8 +193,8 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
           </section>
         </div>
 
-        {/* RIGHT — sticky contact card */}
-        <aside className="space-y-4 lg:sticky lg:top-24 self-start">
+        {/* RIGHT — sticky contact card (desktop) */}
+        <aside className="hidden lg:block space-y-4 lg:sticky lg:top-24 self-start">
           <div className="rounded-2xl bg-ink-900 border border-white/5 p-5">
             <button className="w-full h-12 rounded-xl gradient-bar text-white font-semibold shadow-glow flex items-center justify-center gap-2 hover:opacity-95 transition">
               <Send className="w-4.5 h-4.5" /> Написать сообщение

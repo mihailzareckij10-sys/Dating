@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { StoryRail } from "./components/StoryRail";
+import { TopRail } from "./components/TopRail";
 import { CategoryChips } from "./components/CategoryChips";
 import { ProfileCard } from "./components/ProfileCard";
 import { profiles } from "./data/profiles";
@@ -8,9 +8,10 @@ export default function HomePage() {
   const online = profiles.filter((p) => p.online).length * 162 + 27;
 
   return (
-    <div className="py-4 space-y-5">
+    <div className="py-4 space-y-6">
+      <TopRail />
+
       <CategoryChips />
-      <StoryRail />
 
       <div className="flex items-end justify-between pt-1">
         <div>

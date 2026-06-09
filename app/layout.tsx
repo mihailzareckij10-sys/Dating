@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { TopBar, Header } from "./components/Header";
 import { BottomNav } from "./components/BottomNav";
+import { AuthProvider } from "./components/AuthProvider";
+import { LoginModal } from "./components/LoginModal";
 
 export const metadata: Metadata = {
   title: "lumi — проверенные знакомства",
@@ -23,10 +25,13 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className="min-h-screen antialiased">
-        <TopBar />
-        <Header />
-        <main className="mx-auto max-w-6xl px-3 sm:px-4 pb-24 sm:pb-12">{children}</main>
-        <BottomNav />
+        <AuthProvider>
+          <TopBar />
+          <Header />
+          <main className="mx-auto max-w-6xl px-3 sm:px-4 pb-24 sm:pb-12">{children}</main>
+          <BottomNav />
+          <LoginModal />
+        </AuthProvider>
       </body>
     </html>
   );

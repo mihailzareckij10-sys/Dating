@@ -44,3 +44,76 @@ body {
   background: linear-gradient(90deg, #1c1c28 25%, #262633 37%, #1c1c28 63%);
   background-size: 400% 100%;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Map avatar pins ── */
+.lumi-pin {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.lumi-pin img {
+  width: 50px;
+  height: 50px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 2.5px solid #ff4d76;
+  box-shadow: 0 6px 18px -4px rgba(0, 0, 0, 0.7);
+  transition: transform 0.18s ease;
+}
+.lumi-pin:hover img {
+  transform: scale(1.12);
+}
+.lumi-pin .lumi-dot {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: #34d399;
+  border: 2px solid #0c0c11;
+}
+.lumi-pin .lumi-name {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(12, 12, 17, 0.85);
+  padding: 2px 7px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+.lumi-pin:hover .lumi-name {
+  opacity: 1;
+}
+.leaflet-container {
+  background: #111118;
+  font-family: var(--font-sans);
+}
+.leaflet-bar a {
+  background: #1c1c28 !important;
+  color: #f4f4f7 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+.leaflet-bar a:hover {
+  background: #262633 !important;
+}
+.leaflet-control-attribution {
+  background: rgba(12, 12, 17, 0.7) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+.leaflet-control-attribution a {
+  color: rgba(255, 255, 255, 0.6) !important;
+}

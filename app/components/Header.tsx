@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Search, Map, Plus, Moon, Globe, ShieldCheck } from "lucide-react";
+import { useAuth } from "./AuthProvider";
 
 export function TopBar() {
   return (
@@ -24,6 +26,14 @@ export function TopBar() {
 }
 
 export function Header() {
+  const { user, openLogin } = useAuth();
+  const router = useRouter();
+
+  const handleCreate = () => {
+    if (user) router.push("/create");
+    else openLogin();
+  };
+
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-ink-950/80 backdrop-blur-xl">
       <div className="mx-auto max-w-6xl px-3 sm:px-4 h-16 flex items-center gap-3">
@@ -48,10 +58,31 @@ export function Header() {
 
         <div className="flex-1 sm:hidden" />
 
-        <button className="h-10 px-3 rounded-xl text-sm font-medium text-white/80 hover:text-white transition">
-          Войти
-        </button>
-        <button className="h-10 px-3 sm:px-4 rounded-xl gradient-bar text-white text-sm font-semibold shadow-glow flex items-center gap-1.5 hover:opacity-95 transition">
+        {user ? (
+          <Link
+            href="/account"
+            className="h-10 pl-1 pr-3 rounded-xl bg-ink-800 border border-white/5 flex items-center gap-2 hover:border-brand/40 transition"
+          >
+            <img
+              src={user.photo_url || "https://i.pravatar.cc/100?img=5"}
+              alt={user.first_name}
+              className="w-8 h-8 rounded-lg object-cover"
+            />
+            <span className="text-sm font-medium max-w-[90px] truncate">{user.first_name}</span>
+          </Link>
+        ) : (
+          <button
+            onClick={openLogin}
+            className="h-10 px-3 rounded-xl text-sm font-medium text-white/80 hover:text-white transition"
+          >
+            Войти
+          </button>
+        )}
+
+        <button
+          onClick={handleCreate}
+          className="h-10 px-3 sm:px-4 rounded-xl gradient-bar text-white text-sm font-semibold shadow-glow flex items-center gap-1.5 hover:opacity-95 transition"
+        >
           <Plus className="w-4 h-4" />
           <span className="hidden sm:inline">Создать анкету</span>
         </button>
